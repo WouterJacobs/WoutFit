@@ -53,13 +53,13 @@ build/
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/FrontEnd/WoutFit-FrontEnd/dist
+/FrontEnd/WoutFit-FrontEnd/tmp
+/FrontEnd/WoutFit-FrontEnd/out-tsc
+/FrontEnd/WoutFit-FrontEnd/bazel-out
 
 # Node
-/node_modules
+/FrontEnd/WoutFit-FrontEnd/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -81,13 +81,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/FrontEnd/WoutFit-FrontEnd/.angular/cache
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+/FrontEnd/WoutFit-FrontEnd/connect.lock
+/FrontEnd/WoutFit-FrontEnd/coverage
+/FrontEnd/WoutFit-FrontEnd/libpeerconnection.log
 testem.log
-/typings
+/FrontEnd/WoutFit-FrontEnd/typings
 
 # System files
 .DS_Store
