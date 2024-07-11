@@ -1,9 +1,6 @@
 package be.wouterjacobs.woutfitbackend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Workout {
@@ -11,5 +8,6 @@ public class Workout {
     private Long id;
     private String name;
     private int duration;
+    @Enumerated(EnumType.STRING)
     private WorkoutType workoutType;
 }
