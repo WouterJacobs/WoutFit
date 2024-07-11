@@ -21,4 +21,7 @@ public class WorkoutService {
     public Workout getWorkoutById(Long id){
         return workoutRepository.findById(id).orElseThrow();
     }
+    public void addWorkout(Workout workout){
+        workoutRepository.save(workout);
+    }
 }

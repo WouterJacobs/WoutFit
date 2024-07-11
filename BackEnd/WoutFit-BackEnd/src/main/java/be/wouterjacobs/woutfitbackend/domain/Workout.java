@@ -11,6 +11,12 @@ public class Workout {
     @Enumerated(EnumType.STRING)
     private WorkoutType workoutType;
 
+    public Workout(String name, int duration, WorkoutType workoutType) {
+        this.name = name;
+        this.duration = duration;
+        this.workoutType = workoutType;
+    }
+    public Workout(){}
     public Long getId() {
         return id;
     }
