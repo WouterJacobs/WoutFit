@@ -16,6 +16,6 @@ public class WorkoutService {
     }
 
     public List<Workout> getAllWorkouts(){
-        return workoutRepository.findAll();
+        return workoutRepository.findAll().stream().toList();
     }
 }
