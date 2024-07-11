@@ -18,4 +18,7 @@ public class WorkoutService {
     public List<Workout> getAllWorkouts(){
         return workoutRepository.findAll().stream().toList();
     }
+    public Workout getWorkoutById(Long id){
+        return workoutRepository.findById(id).orElseThrow();
+    }
 }
