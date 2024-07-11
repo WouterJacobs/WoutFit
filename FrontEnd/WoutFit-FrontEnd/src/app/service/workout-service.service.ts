@@ -1,16 +1,29 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
-interface IWorkout {
+enum WorkoutType {
+  RUN = 'RUN',
+  JOG = 'JOG',
+  DANCE = 'DANCE'
+}
+
+export interface IWorkout {
+  id: number;
+  name: string;
+  duration: number;
+  workoutType: WorkoutType;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutServiceService {
+  private apiUrl = 'http://localhost:8081/workouts';
 
   constructor(private http: HttpClient) { }
-  getWorkouts(){
-    return this.http.get<IWorkout[]>("http://localhost:8081/api/workouts");
+
+  getWorkouts(): Observable<IWorkout[]> {
+    return this.http.get<IWorkout[]>(this.apiUrl);
   }
 }

@@ -1,1 +1,20 @@
 <p>workout works!</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Duration (minutes)</th>
+    <th>Workout Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let workout of workouts">
+    <td>{{ workout.id }}</td>
+    <td>{{ workout.name }}</td>
+    <td>{{ workout.duration }}</td>
+    <td>{{ workout.workoutType }}</td>
+  </tr>
+  </tbody>
+</table>
