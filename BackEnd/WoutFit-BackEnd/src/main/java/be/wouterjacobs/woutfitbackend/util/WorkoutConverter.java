@@ -2,25 +2,26 @@ package be.wouterjacobs.woutfitbackend.util;
 
 import be.wouterjacobs.woutfitbackend.controller.dto.WorkoutDTO;
 import be.wouterjacobs.woutfitbackend.domain.Workout;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WorkoutConverter {
-    public static WorkoutDTO toWorkoutDTO(Workout workout) {
-        return new WorkoutDTO(
-                workout.getId(),
+    public WorkoutDTO toWorkoutDTO(Workout workout) {
+        WorkoutDTO workoutDTO = new WorkoutDTO(
                 workout.getName(),
                 workout.getDuration(),
                 workout.getWorkoutType()
         );
+        workout.setId(workout.getId());
+        return workoutDTO;
     }
 
-    public static Workout toEntity(WorkoutDTO workoutDTO) {
-        Workout workout = new Workout(
+    public Workout toWorkoutEntity(WorkoutDTO workoutDTO) {
+        return new Workout(
                 workoutDTO.getName(),
                 workoutDTO.getDuration(),
                 workoutDTO.getWorkoutType()
         );
-        workout.setId(workoutDTO.getId());
-        return workout;
     }
 }
 

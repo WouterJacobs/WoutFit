@@ -1,14 +1,13 @@
 package be.wouterjacobs.woutfitbackend.controller.api;
 
+import be.wouterjacobs.woutfitbackend.controller.dto.WorkoutDTO;
 import be.wouterjacobs.woutfitbackend.domain.Workout;
 import be.wouterjacobs.woutfitbackend.domain.WorkoutType;
 import be.wouterjacobs.woutfitbackend.service.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,12 +22,21 @@ public class WorkoutController {
     }
 
     @GetMapping
-    public List<Workout> getWorkouts(){
-        return workoutService.getAllWorkouts();
+    public ResponseEntity<List<Workout>> getWorkouts() {
+        List<Workout> workouts = workoutService.getAllWorkouts();
+        return ResponseEntity.ok(workouts);
     }
 
     @PostMapping
-    public void addWorkout(){
-        workoutService.addWorkout(new Workout("Inserted workout",120, WorkoutType.DANCE));
+    public ResponseEntity<Void> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
+        workoutService.addWorkout(workoutDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Workout> getWorkoutById(@PathVariable Long id) {
+        Workout workout = workoutService.getWorkoutById(id);
+        return ResponseEntity.ok(workout);
+    }
+
 }
