@@ -28,6 +28,7 @@ public class WorkoutController {
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200/")
     public ResponseEntity<Void> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
         workoutService.addWorkout(workoutDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
