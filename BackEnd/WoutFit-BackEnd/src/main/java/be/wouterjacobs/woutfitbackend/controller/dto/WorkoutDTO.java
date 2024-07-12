@@ -8,7 +8,6 @@ public class WorkoutDTO {
     private int duration;
     private WorkoutType workoutType;
 
-    // Default constructor
     public WorkoutDTO() {}
 
     public WorkoutDTO(String name, int duration, WorkoutType workoutType) {

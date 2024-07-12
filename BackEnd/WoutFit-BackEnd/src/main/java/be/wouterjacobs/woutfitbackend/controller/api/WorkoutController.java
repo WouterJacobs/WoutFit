@@ -22,6 +22,7 @@ public class WorkoutController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200/")
     public ResponseEntity<List<Workout>> getWorkouts() {
         List<Workout> workouts = workoutService.getAllWorkouts();
         return ResponseEntity.ok(workouts);
