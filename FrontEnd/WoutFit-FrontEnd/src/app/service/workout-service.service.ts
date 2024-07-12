@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-enum WorkoutType {
+export enum WorkoutType {
   RUN = 'RUN',
   JOG = 'JOG',
   DANCE = 'DANCE'
@@ -25,5 +25,9 @@ export class WorkoutServiceService {
 
   getWorkouts(): Observable<IWorkout[]> {
     return this.http.get<IWorkout[]>(this.apiUrl);
+  }
+
+  addWorkout(workout: IWorkout): Observable<IWorkout> {
+    return this.http.post<IWorkout>(this.apiUrl, workout);
   }
 }
