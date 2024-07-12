@@ -11,8 +11,7 @@ public class WorkoutDTO {
     // Default constructor
     public WorkoutDTO() {}
 
-    public WorkoutDTO(Long id, String name, int duration, WorkoutType workoutType) {
-        this.id = id;
+    public WorkoutDTO(String name, int duration, WorkoutType workoutType) {
         this.name = name;
         this.duration = duration;
         this.workoutType = workoutType;
