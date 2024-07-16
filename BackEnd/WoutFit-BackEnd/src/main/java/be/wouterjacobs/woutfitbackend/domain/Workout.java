@@ -1,6 +1,9 @@
 package be.wouterjacobs.woutfitbackend.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 @Entity
 public class Workout {
@@ -10,13 +13,24 @@ public class Workout {
     private int duration;
     @Enumerated(EnumType.STRING)
     private WorkoutType workoutType;
+    private LocalDate date;
+    private int caloriesBurned;
+    @Nullable
+    private Double distanceInKilometers;
+    private int intensityLevel; // 1-10
 
-    public Workout(String name, int duration, WorkoutType workoutType) {
+    public Workout(String name, int duration, WorkoutType workoutType, LocalDate date, int caloriesBurned,
+                   @Nullable Double distanceInKilometers, int intensityLevel) {
         this.name = name;
         this.duration = duration;
         this.workoutType = workoutType;
+        this.date = date;
+        this.caloriesBurned = caloriesBurned;
+        this.distanceInKilometers = distanceInKilometers;
+        this.intensityLevel = intensityLevel;
     }
     public Workout(){}
+
     public Long getId() {
         return id;
     }
@@ -47,5 +61,38 @@ public class Workout {
 
     public void setWorkoutType(WorkoutType workoutType) {
         this.workoutType = workoutType;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public int getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public void setCaloriesBurned(int caloriesBurned) {
+        this.caloriesBurned = caloriesBurned;
+    }
+
+    @Nullable
+    public Double getDistanceInKilometers() {
+        return distanceInKilometers;
+    }
+
+    public void setDistanceInKilometers(@Nullable Double distanceInKilometers) {
+        this.distanceInKilometers = distanceInKilometers;
+    }
+
+    public int getIntensityLevel() {
+        return intensityLevel;
+    }
+
+    public void setIntensityLevel(int intensityLevel) {
+        this.intensityLevel = intensityLevel;
     }
 }

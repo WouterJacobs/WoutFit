@@ -10,9 +10,13 @@ public class WorkoutConverter {
         WorkoutDTO workoutDTO = new WorkoutDTO(
                 workout.getName(),
                 workout.getDuration(),
-                workout.getWorkoutType()
+                workout.getWorkoutType(),
+                workout.getDate(),
+                workout.getCaloriesBurned(),
+                workout.getDistanceInKilometers(),
+                workout.getIntensityLevel()
         );
-        workout.setId(workout.getId());
+        workoutDTO.setId(workout.getId());
         return workoutDTO;
     }
 
@@ -20,7 +24,11 @@ public class WorkoutConverter {
         return new Workout(
                 workoutDTO.getName(),
                 workoutDTO.getDuration(),
-                workoutDTO.getWorkoutType()
+                workoutDTO.getWorkoutType(),
+                workoutDTO.getDate(),
+                workoutDTO.getCaloriesBurned(),
+                workoutDTO.getDistanceInKilometers(),
+                workoutDTO.getIntensityLevel()
         );
     }
 }

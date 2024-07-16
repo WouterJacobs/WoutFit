@@ -13,7 +13,12 @@ export interface IWorkout {
   name: string;
   duration: number;
   workoutType: WorkoutType;
+  date: string;
+  caloriesBurned: number;
+  distanceInKilometers?: number | null;
+  intensityLevel: number;
 }
+
 
 @Injectable({
   providedIn: 'root'

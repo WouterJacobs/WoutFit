@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {WorkoutServiceService, IWorkout} from "../service/workout-service.service";
 import {HttpClientModule} from "@angular/common/http";
-import {NgForOf} from "@angular/common";
+import {DatePipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-workout',
   standalone: true,
-  imports: [HttpClientModule, NgForOf],
+  imports: [HttpClientModule, NgForOf, DatePipe],
   templateUrl: './workout.component.html',
   styleUrl: './workout.component.css'
 })
