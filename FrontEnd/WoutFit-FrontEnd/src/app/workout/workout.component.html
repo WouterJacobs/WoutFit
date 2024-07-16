@@ -16,9 +16,9 @@
       <td>{{ workout.name }}</td>
       <td>{{ workout.duration }}</td>
       <td>{{ workout.workoutType.toLowerCase()}}</td>
-      <td>{{ workout.date | date:'medium' }}</td>
+      <td>{{ workout.date | date:'d/M/y' }}</td>
       <td>{{ workout.caloriesBurned }}</td>
-      <td>{{ workout.distanceInKilometers || '-' }}</td>
+      <td>{{ workout.distanceInKilometers || 'N/A' }}</td>
       <td>{{ workout.intensityLevel }}</td>
     </tr>
     </tbody>

@@ -30,7 +30,10 @@ export class WorkoutFormComponent implements OnInit {
     this.workoutForm = this.fb.group({
       name: ['', Validators.required],
       duration: ['', [Validators.required, Validators.min(1)]],
-      workoutType: [this.workoutTypes[0], Validators.required]
+      workoutType: [this.workoutTypes[0], Validators.required],      caloriesBurned: ['', Validators.required], // Add validators as per your requirements
+      distanceInKilometers: [''],
+      intensityLevel: ['', Validators.required],
+      date: ['', Validators.required]
     });
   }
 
