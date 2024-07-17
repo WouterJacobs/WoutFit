@@ -17,7 +17,7 @@ public class Workout {
     private int caloriesBurned;
     @Nullable
     private Double distanceInKilometers;
-    private int intensityLevel; // 1-10
+    private int intensityLevel;
 
     public Workout(String name, int duration, WorkoutType workoutType, LocalDate date, int caloriesBurned,
                    @Nullable Double distanceInKilometers, int intensityLevel) {
