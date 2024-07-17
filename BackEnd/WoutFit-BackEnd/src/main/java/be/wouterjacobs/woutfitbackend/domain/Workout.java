@@ -27,10 +27,16 @@ public class Workout {
         this.date = date;
         this.caloriesBurned = caloriesBurned;
         this.distanceInKilometers = distanceInKilometers;
-        this.intensityLevel = intensityLevel;
+        assignIntensityLevel(intensityLevel);
     }
     public Workout(){}
 
+    private void assignIntensityLevel(int intensityLevel){
+        if (intensityLevel < 1 || intensityLevel > 10){
+            throw new IllegalArgumentException("The intensity level must be between 1 and 10 including.");
+        }
+        this.intensityLevel = intensityLevel;
+    }
     public Long getId() {
         return id;
     }
@@ -93,6 +99,6 @@ public class Workout {
     }
 
     public void setIntensityLevel(int intensityLevel) {
-        this.intensityLevel = intensityLevel;
+        assignIntensityLevel(intensityLevel);
     }
 }

@@ -48,6 +48,22 @@ class WorkoutTest {
     }
 
     @Test
+    void assigningIntensityLevelBetween1and10AssignsProperly(){
+        emptyWorkout.setIntensityLevel(1);
+        assertEquals(1, emptyWorkout.getIntensityLevel());
+        emptyWorkout.setIntensityLevel(10);
+        assertEquals(10, emptyWorkout.getIntensityLevel());
+        emptyWorkout.setIntensityLevel(5);
+        assertEquals(5, emptyWorkout.getIntensityLevel());
+    }
+    @Test
+    void assigningInvalidIntensityLevelShouldThrowException(){
+        assertThrows(IllegalArgumentException.class, () -> emptyWorkout.setIntensityLevel(0));
+        assertThrows(IllegalArgumentException.class, () -> emptyWorkout.setIntensityLevel(-1));
+        assertThrows(IllegalArgumentException.class, () -> emptyWorkout.setIntensityLevel(11));
+    }
+
+    @Test
     void getId() {
         emptyWorkout.setId(1L);
         assertEquals(1L, emptyWorkout.getId());
