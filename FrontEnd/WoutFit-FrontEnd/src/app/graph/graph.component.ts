@@ -1,8 +1,10 @@
 // src/app/app.component.ts
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
 import {IWorkout, WorkoutServiceService} from "../service/workout-service.service";
 import {BaseChartDirective} from "ng2-charts";
+import {isPlatformBrowser, NgIf} from "@angular/common";
+
 
 
 @Component({
@@ -10,13 +12,13 @@ import {BaseChartDirective} from "ng2-charts";
   standalone: true,
   templateUrl: './graph.component.html',
   imports: [
-    BaseChartDirective
+    BaseChartDirective,
+    NgIf
   ],
   styleUrl: './graph.component.css'
 })
 export class GraphComponent implements OnInit {
-  title = 'ng2-charts-demo';
-
+  isBrowser: boolean;
   public barChartLegend = true;
   public barChartPlugins = [];
 
@@ -24,21 +26,30 @@ export class GraphComponent implements OnInit {
     labels: [],
     datasets: [
       { data: [], label: 'Calories Burned' },
-      { data: [], label: 'Duration (min)' }
+      { data: [], label: 'Duration (min)' },
+      { data: [], label: 'Distance (km)' },
     ]
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: false,
+    responsive: true,
   };
 
-  constructor(private workoutService: WorkoutServiceService) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private workoutService: WorkoutServiceService
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
-    this.workoutService.getWorkouts().subscribe((workouts: IWorkout[]) => {
-      this.barChartData.labels = workouts.map(workout => workout.name);
-      this.barChartData.datasets[0].data = workouts.map(workout => workout.caloriesBurned);
-      this.barChartData.datasets[1].data = workouts.map(workout => workout.duration);
-    });
+    if (this.isBrowser) {
+      this.workoutService.getWorkouts().subscribe((workouts: IWorkout[]) => {
+        this.barChartData.labels = workouts.map(workout => workout.name);
+        this.barChartData.datasets[0].data = workouts.map(workout => workout.caloriesBurned);
+        this.barChartData.datasets[1].data = workouts.map(workout => workout.duration);
+        this.barChartData.datasets[2].data = workouts.map(workout => workout.distanceInKilometers ? workout.distanceInKilometers : 0);
+      });
+    }
   }
 }
